@@ -1,0 +1,307 @@
+
+/** container **/
+.page_container{
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: メイリオ, sans-serif;
+}
+
+
+/** header part **/
+
+.page_header{
+    height: 50px;
+    padding: 25px 0;
+    min-width: 750px;
+    max-width: 1000px;
+}
+
+.page_header .form_area{
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 後述の.scaleと同じ位置取りをする*/
+.a_form{
+    width: 30%;
+    height: 50px;
+    float: left;
+    position: relative; /* outgoボタンの基準にするため指定 */
+    font-family: "メイリオ";
+}
+
+.a_form:last-child{
+    width: 40%;
+}
+
+/* infoフォームたち(真ん中のフォーム) */
+.a_form .info, .a_form label{
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 50px;
+    font-size: 110%;
+}
+  /* フォーム(title,sumテキストとdetailテキストエリア)*/
+.info{
+    border: 6px solid black;
+    width: 55%;
+    padding: 0 3px;
+    font-family: "メイリオ";
+}
+  /* フォーム(フォーカス時)*/
+.info:focus{
+    outline: 4px rgba(252,128,74,.2) solid;
+}
+
+  /* detailフォーム(textarea)*/
+.info#item_detail{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 50%;
+    height: 50px;
+    padding: 7px;
+    z-index: 1000;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+  /* detailフォーム(拡大)*/
+.active#item_detail{
+    width: 100%;
+    height: 120px;
+}
+
+  /* ￥ラベル*/
+.a_form label{
+  width: 10%;
+  padding-left: 6px;
+}
+  /* 金額フォーム*/
+.a_form #item_sum{
+    width: 35%;
+    padding: 0 2px;
+    line-height: 0px; /* input[:number]のテキストを真ん中にするため IE用では[:text]なので50pxに変える*/
+}
+
+/* ボタン */
+.btn{
+    display: block;
+    width: 140px;
+    height: 38px; /*header(50px) - border(6+6px)*/
+    line-height: 36px; /* box-shadowの分(2px)だけ文字を上にずらす */
+    border: 6px solid black;
+    margin-left: 18%; /*income皿のleft:10% + 余白:8%*/
+    background: #f4d837;
+    font-family: "MV Boli", メイリオ, sans-serif;
+    font-size: 1.2em;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: -2px -2px 4px rgba(0,0,0,0.3) inset;
+}
+
+.outgo-btn{
+    position: absolute;
+    top: 0;
+    right: 27%; /*outcome皿のright:20% + 余白:7%*/
+    background: #f2a638; 
+}
+
+/* サポートメッセージ */
+.support_msg{
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: -125px;
+    background: #e9fdff;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px lightsteelblue;
+    padding: 7px 24px;
+    text-align: center;
+    font-family: "メイリオ";
+    font-size: 14px;
+    opacity: 0.95;
+    white-space: nowrap;
+    z-index: 3000;
+    -webkit-transition: "display" 1s;
+    -moz-transition: "display" 1s;
+    transition: "display" 1s;
+}
+.support_msg.sum{
+    left: 30px; 
+}
+.support_msg.detail{
+    top: 80px;
+}
+.support_msg.limit{
+    top: -80px;
+    left: 50px;
+}
+.support_msg.show{
+    display: block; 
+}
+
+
+
+/** content part **/
+
+.page_content{
+    overflow: hidden;
+    min-width: 750px;
+    max-width: 1000px;
+}
+
+.scale{
+    height: 420px;
+    width: 30%;
+    min-width: 200px;
+    float: left;
+    overflow: visible;
+    position: relative;
+    margin-top: 0;
+}
+
+.scale:nth-child(2){
+    width: 40%;
+    float: right;
+    overflow: visible;
+}
+
+.scale:last-child{
+    overflow: visible;
+}
+
+.scale .abs_area{
+    position: absolute;
+    left: 10%;
+    width: 90%;
+    height: 132px;
+    background-repeat: no-repeat;
+    background-image: url("../images/income_plate.png"); /* cssスプライトで置き換える*/
+}
+
+.scale:nth-child(2) .abs_area{
+    background-image: url("../images/outgo_plate.png"); /* cssスプライトで置き換える*/
+    background-position: right top;
+    width: 130%;
+    right: 20%;
+    left: auto;
+    z-index: 500;
+}
+
+/* リストのスタイル */
+.abs_area ul{
+  position: absolute;
+  width: 160px;
+  list-style: none;
+  font-family: メイリオ;
+  font-size: 120%;
+}
+
+.outgo_parts ul{
+  position: absolute;
+  width: 160px;
+  top: 0;
+  right: 0px
+}
+
+.abs_area ul li{
+    white-space: nowrap;
+    width: 90%;
+    right: 10px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+/* 中央のバロメータ*/
+.scale:last-child .balances{
+    position: absolute;
+    top: 200px;
+    width: 90px;
+    height: 178px;
+    overflow: hidden;
+    background: white;
+    border: 9px solid black;
+}
+
+.scale:last-child .balances div{
+   position: absolute;
+   width: 90px;
+   height: 175px;
+   border-bottom: 4px solid black;
+   z-index: 800;
+}
+
+/* ページ下部の合計金額表示欄 */
+.sum_informer{
+   width: 100%;
+   min-width: 750px;
+   height: 60px;
+   margin-top: -30px;
+   margin-bottom: 30px;
+}
+
+.sum_informer div{
+   position: relative;
+   width: 30%;
+   float: left;
+   text-align: center;
+   font-family: メイリオ;
+   font-size: 120%;
+}
+.sum_informer div:last-child{
+   width: 40%;
+   float: right;
+}
+
+.sum_informer .sum_display{
+   display: inline-block;
+   width: 100px;
+   height: 100%;
+   border: 4px solid black;
+   background: white;
+}
+
+.sum_informer input[type="number"]{
+    width: 92px;
+    padding: 0 5px;
+}
+
+.italic_text{
+    font-size: 90%;
+    font-family: "MV Boli", メイリオ, sans-serif;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+/* 背景のカラー */
+.backcolor{
+    position: fixed;
+    bottom: 0;
+    left: 2% ;
+    width: 96%;
+    height: 82%;
+    background-color: #fff387;
+    z-index: -1;
+    -webkit-transition: all .3s; /* 目がちかちかしないようにちょっとだけトランジション*/
+    -moz-transition: all .3s; 
+    transition: all .3s; 
+}
+.backcolor.plus{
+    background-color: #fff387;
+}
+.backcolor.minus{
+    background-color: #ffbe71;
+}
+.backcolor.equal{
+    background-color: #d3fcb9;
+}
