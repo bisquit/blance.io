@@ -1,2 +1,2 @@
 Balance your INCOME and OUTGO.
-It's good.
+It's good and cool.
